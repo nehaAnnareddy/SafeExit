@@ -51,7 +51,7 @@
     .shield {
         width: 150px;
         height: 150px;
-        background: url('/public/shield.png') no-repeat center;
+        background: url('../public/Shield.png') no-repeat center;
         background-size: contain;
         position: relative; 
         display: flex;

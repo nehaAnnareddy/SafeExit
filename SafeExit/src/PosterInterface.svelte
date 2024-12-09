@@ -1,3 +1,10 @@
+<!--
+  SOS Poster Component
+  ---------------------
+  - Displays a poster background with an interactive "SOS" button.
+  - Periodically highlights the button with a "hand" animation to draw attention.
+  - Clicking the "SOS" button navigates to the help menu via dispatch.
+-->
 <script>
     import { createEventDispatcher, onMount } from "svelte";
     const dispatch = createEventDispatcher();
@@ -6,15 +13,14 @@
     let buttonHover = false;
 
     onMount(() => {
-        // Toggle the visibility of the hand and simulate a click every 10 seconds
         setInterval(() => {
             showHand = true;
             buttonHover = true;
             setTimeout(() => {
                 showHand = false;
                 buttonHover = false;
-            }, 1000); // Show hand and simulate hover for 1 second
-        }, 10000); // Repeat every 10 seconds
+            }, 1000); 
+        }, 10000); 
     });
 
     function handleSOSClick() {
@@ -26,7 +32,7 @@
     body {
         margin: 0;
         padding: 0;
-        background-image: url('/public/woodWall.jpg'); /* Ensure the path is correct */
+        background-image: url('/public/woodWall.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -37,8 +43,8 @@
     }
 
     .poster-frame {
-        width: 780px;
-        height: 970px;
+        width: 790px;
+        height: 980px;
         display: flex;
         border-radius: 2%;
         justify-content: center;
@@ -52,7 +58,7 @@
     .poster {
         width: 100%;
         height: 100%;
-        background-image: url('/public/Hygiene.jpg'); /* Ensure this path works */
+        background-image: url('/public/Hygiene.jpg'); 
         background-size: cover;
         background-position: center;
         border-radius: 10px;
@@ -66,8 +72,8 @@
         color: #ffffff;
         border: 2px solid #d43c4f;
         border-radius: 20px;
-        width: 100px;
-        height: 40px;
+        width: 150px;
+        height: 80px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -76,32 +82,33 @@
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: transform 0.2s ease-in-out;
+        font-size: 24px;
     }
 
     .sos-button:hover,
     .sos-button.hover {
-        transform: scale(1.1); /* Make button larger on hover or simulated click */
+        transform: scale(1.1); 
     }
 
     .hand {
         position: absolute;
-        bottom: 20px; /* Start above the SOS button */
+        bottom: 20px;
         right: 20px;
         width: 50px;
         height: 50px;
-        background-image: url('/public/handClick.png'); /* Replace with your hand icon path */
+        background-image: url('/public/handClick.png'); 
         background-size: contain;
         background-repeat: no-repeat;
-        visibility: hidden; /* Hidden by default */
-        opacity: 0; /* Invisible by default */
+        visibility: hidden;
+        opacity: 0; 
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         animation: none;
     }
 
     .hand.show {
-        visibility: visible; /* Show when toggled */
+        visibility: visible; 
         opacity: 1;
-        animation: click 0.5s ease-in-out; /* Simulate hand click */
+        animation: click 0.5s ease-in-out; 
     }
 
     @keyframes click {
@@ -109,17 +116,16 @@
             transform: translateY(0);
         }
         50% {
-            transform: translateY(20px); /* Move down to click the button */
+            transform: translateY(20px); 
         }
         100% {
-            transform: translateY(0); /* Move back up */
+            transform: translateY(0); 
         }
     }
 </style>
 
 <div class="poster-frame">
     <div class="poster">
-        <!-- Add interactive content or elements inside the poster if needed -->
     </div>
     <button
         class="sos-button {buttonHover ? 'hover' : ''}"
